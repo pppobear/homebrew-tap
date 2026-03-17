@@ -2,7 +2,7 @@
 
 ## How do I install these formulae?
 
-`brew install pppobear/tap/<formula>`
+`brew install pppobear/tap/pinentry-rbw-macos`
 
 Or `brew tap pppobear/tap` and then `brew install <formula>`.
 
@@ -10,7 +10,7 @@ Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
 tap "pppobear/tap"
-brew "<formula>"
+brew "pinentry-rbw-macos"
 ```
 
 ## Documentation
