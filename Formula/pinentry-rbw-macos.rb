@@ -1,9 +1,9 @@
 class PinentryRbwMacos < Formula
   desc "macOS pinentry for rbw with Touch ID or Apple Watch authentication"
   homepage "https://github.com/pppobear/pinentry-rbw-macos"
-  url "https://github.com/pppobear/pinentry-rbw-macos/archive/f1fdfd31ba960a5431fc96a331f1c00dabd5dcf0.tar.gz"
+  url "https://github.com/pppobear/pinentry-rbw-macos/archive/refs/tags/v0.1.0.tar.gz"
   version "0.1.0"
-  sha256 "f603828d68456f1c49b1a89a31cf53252749d5096570c601f1be6b7c5ec5b521"
+  sha256 "ab3af063fe4e8b695bdf91b9c4460bd34d6967139dfdbb0d46f9349dff207c7b"
   head "https://github.com/pppobear/pinentry-rbw-macos.git", branch: "main"
 
   depends_on :macos
