@@ -3,10 +3,12 @@ class PinentryRbwMacos < Formula
   homepage "https://github.com/pppobear/pinentry-rbw-macos"
   version "0.2.3"
 
-  if Hardware::CPU.arm?
+  on_arm do
     url "https://github.com/pppobear/pinentry-rbw-macos/releases/download/v0.2.3/pinentry-rbw-macos-v0.2.3-macos-arm64.zip"
     sha256 "5b2d9d9a6a32d49bc7686168ae4950792d733414f9e94c3eeab6e165e2892dab"
-  else
+  end
+
+  on_intel do
     url "https://github.com/pppobear/pinentry-rbw-macos/releases/download/v0.2.3/pinentry-rbw-macos-v0.2.3-macos-x86_64.zip"
     sha256 "12f2ee0156e8dbb74255cc2a8473f05a8bde2adc92d90570f8a5beb8981897f9"
   end
