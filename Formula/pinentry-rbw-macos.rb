@@ -1,18 +1,28 @@
 class PinentryRbwMacos < Formula
   desc "macOS pinentry for rbw with Touch ID or Apple Watch authentication"
   homepage "https://github.com/pppobear/pinentry-rbw-macos"
-  url "https://github.com/pppobear/pinentry-rbw-macos/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "697a282e3b2db06e6ddb01be10c7398346db660ee27e27d8c8896c9bd37fa28a"
-  head "https://github.com/pppobear/pinentry-rbw-macos.git", branch: "main"
+  version "0.2.2"
 
-  depends_on :macos
+  on_arm do
+    url "https://github.com/pppobear/pinentry-rbw-macos/releases/download/v0.2.2/pinentry-rbw-macos-v0.2.2-macos-arm64.zip"
+    sha256 "7567c35ff8e44be085402ba11a686c64016fc9f1b2dc53b26d71bc7bbb82bfc7"
+  end
+
+  on_intel do
+    url "https://github.com/pppobear/pinentry-rbw-macos/releases/download/v0.2.2/pinentry-rbw-macos-v0.2.2-macos-x86_64.zip"
+    sha256 "08e6fcb8e769e6381d708ea0e855a8d1866f23be21a250249f6998fc27fd036c"
+  end
+
+  depends_on macos: :ventura
 
   def install
-    system "swift", "build", "-c", "release", "--disable-sandbox"
-    bin.install ".build/release/pinentry-rbw-macos"
+    bin.install "pinentry-rbw-macos"
+    zsh_completion.install "completions/_pinentry-rbw-macos"
+    fish_completion.install "completions/pinentry-rbw-macos.fish"
   end
 
   test do
-    assert_match "pinentry-rbw-macos", shell_output("#{bin}/pinentry-rbw-macos --help")
+    output = pipe_output("#{bin}/pinentry-rbw-macos", "GETINFO version\nBYE\n")
+    assert_match "D #{version}", output
   end
 end
